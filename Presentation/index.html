@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>VRLabs | Project Proposal</title>
+
+  <meta name="description" content="">
+  <meta name="author" content="Elijah T. Rose, elirose">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- REVEAL CSS-->
+  <link rel="stylesheet" href="libs/reveal.js/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/reveal.css">
+  
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/theme/night.css" id="theme">
+  
+  
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/plugin/title-footer/title-footer-mod.css" />
+
+  <!-- MERMAID-->
+  <script src="libs/reveal.js/3.8.0/plugin/mermaid/mermaid.min.js"></script>
+  <style>
+  .mermaid {
+    font-size: 0.5em;
+  }
+  </style>
+
+  <style>
+    [class*=task-list-item] {
+    min-height: 22px;
+    margin-top: 6px!important;
+    margin-bottom: 6px!important;
+    padding-left: 0;
+    list-style: none;
+}
+
+[class*=task-list-item]>input:first-child {
+    position: absolute!important;
+    opacity: 0;
+    margin: 0;
+}
+[class*=task-list-item]>label {
+    padding-left: 29px!important;
+    min-height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.task-list-item>input:first-child:checked+input[type=hidden]+label::before, .task-list-item>input:first-child:checked+label::before {
+    background-color: #ecf0f1;
+    border-color: #ecf0f1;
+}
+
+[class*=task-list-item]>input:first-child+input[type=hidden]+label::before, [class*=task-list-item]>input:first-child+label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #D3CFC8;
+    border-radius: 0;
+    margin-left: -29px;
+}
+
+
+[class*=task-list-item]>input:first-child:checked+input[type=hidden]+label::after, [class*=task-list-item]>input:first-child:checked+label::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-left: none;
+    border-top: none;
+    transform: translate(7.75px,4.5px) rotate(45deg);
+    -ms-transform: translate(7.75px,4.5px) rotate(45deg);
+}
+
+
+.task-list-item>input:first-child:checked+input[type=hidden]+label::after, .task-list-item>input:first-child:checked+label::after {
+    border-bottom-color: #95a5a6;
+    border-right-color: #95a5a6;
+}
+  </style>
+
+  <!-- Theme used for syntax highlighting of code -->
+  
+  <link rel="stylesheet" href="libs/highlight.js/9.12.0/monokai.css">
+  
+
+  
+  
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'libs/reveal.js/3.8.0/css/print/pdf.css' : 'libs/reveal.js/3.8.0/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <style>
+    /* Solarized Light theme */
+     .line {
+      display: block;
+    }
+    
+
+    .line.focus {
+      background: #fdf6e3;
+      color: #657b83;
+    }
+
+/*
+    .line.focus .hljs-comment,
+    .line.focus .hljs-quote {
+      color: #93a1a1;
+    }
+
+    .line.focus .hljs-keyword,
+    .line.focus .hljs-selector-tag,
+    .line.focus .hljs-addition {
+      color: #859900;
+    }
+
+    .line.focus .hljs-number,
+    .line.focus .hljs-string,
+    .line.focus .hljs-meta .hljs-meta-string,
+    .line.focus .hljs-literal,
+    .line.focus .hljs-doctag,
+    .line.focus .hljs-regexp {
+      color: #2aa198;
+    }
+
+    .line.focus .hljs-title,
+    .line.focus .hljs-section,
+    .line.focus .hljs-name,
+    .line.focus .hljs-selector-id,
+    .line.focus .hljs-selector-class {
+      color: #268bd2;
+    }
+
+    .line.focus .hljs-attribute,
+    .line.focus .hljs-attr,
+    .line.focus .hljs-variable,
+    .line.focus .hljs-template-variable,
+    .line.focus .hljs-class .hljs-title,
+    .line.focus .hljs-type {
+      color: #b58900;
+    }
+
+    .line.focus .hljs-symbol,
+    .line.focus .hljs-bullet,
+    .line.focus .hljs-subst,
+    .line.focus .hljs-meta,
+    .line.focus .hljs-meta .hljs-keyword,
+    .line.focus .hljs-selector-attr,
+    .line.focus .hljs-selector-pseudo,
+    .line.focus .hljs-link {
+      color: #cb4b16;
+    }
+
+    .line.focus .hljs-built_in,
+    .line.focus .hljs-deletion {
+      color: #dc322f;
+    }
+
+    .line.focus .hljs-formula {
+      background: #eee8d5;
+    }
+
+    .line.focus .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .line.focus .hljs-strong {
+      font-weight: bold;
+    }
+
+    .yellow-slide .line.focus:nth-child(2) {
+      background: yellow;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      font-size: 70%;
+    }
+    */
+
+    .reveal .slides section .fragment.current-only {
+      visibility: visible;
+      display: none;
+    }
+
+    .reveal .slides section .fragment.current-only.current-fragment {
+      display: block;
+    }
+
+/*
+    .line {
+      display: block;
+    }
+*/
+    .line.focus {
+       opacity: 1.0;
+    } 
+
+    /* .hljs {
+      background: none;
+    } */
+
+    /* .reveal pre {
+      width: 98%;
+      margin: 0px;
+      box-shadow: none;
+    }
+
+    .reveal pre code {
+      font-size: 1.2em;
+      line-height: 1.2;
+      border-radius: 10px;
+      max-height: 60vh !important;
+      overflow: hidden !important;
+    } */
+
+    @media (device-width: 100vw) and (device-height: 100vh) {
+      .reveal pre code {
+        max-height: 50vh !important;
+      }
+    }
+
+    #logo img {
+      max-height: 3.5em;
+      max-width: none;
+      min-width: 50px;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      color: white;
+      background: black;
+      padding: 0px 15px;
+      border-radius: 15px;
+      opacity: 0.75 !important;
+      font-size: 50% !important;
+    }
+  </style>
+  <script>
+    if (window.location.search.match(/print-pdf-now/gi)) {
+      window.print();
+    }
+  </script>
+</head>
+
+<body>
+  
+<div id="logo" style="position: fixed; top: 20px; left: 20px; z-index: 1">
+    <img src="Logo-VRLabs.png" />
+</div>
+
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <h1><a id="user-content-vrlabs--project-proposal" class="anchor" href="#vrlabs--project-proposal" aria-hidden="true"></a>VRLabs | Project Proposal</h1>
+<p>A Virtual Reality [@Wiki-VR] attempt to integrate hardware learning with the cost-effectiveness and ease of logistics of software modelling.</p>
+<p>For the purposes of this proposal and most likely the initial project design, the idea of a Circuit-SPICE integration will be used.</p>
+<h2><a id="user-content-existing-solutions" class="anchor" href="#existing-solutions" aria-hidden="true"></a>Existing Solutions</h2>
+<p>Experimental learning has and continues to be an extremely valuable resource to students across grade levels. It is one thing to look at theory or work word problems yet another entirely to see it in practice and work with it by hand. Many people are visual learners and all but require such demonstration to grasp the concepts at hand, and for those who study better by the book it is still useful to handle the real-world analogues in order to make connections between their learning relationships.</p>
+<p>However, real-world demonstrations also pose many problems:</p>
+<ul>
+<li><strong>Cost</strong>: No matter how trivial, near any demo will require some amount of resource costs. Some labs are cheap, some are disposable; however, many may require expensive machinery or not easily-acquirable components. With education systems near always being strained for resources, justifying a $500 or $5000 lesson versus a simple board or paperwork instruction can be daunting, especially in lower-income school systems. Such costs can put poorer students at further disadvantages compared to more well-off students and school systems.</li>
+<li><strong>Safety</strong>: many experiments are relatively harmless assuming basic precautions. But in some chemical, physics, and electrical experiments there is a risk to both the components (refer back to cost) as well as the individuals involved unless there is a strict adherence to protocol. To some extent, this risk can be seen as beneficial due to being able to encounter it in a laboratory setting with plentiful safety devices and people nearby. However, for labs that can prove dangerous such that instant irreversible damage can take place to unwary students, there is a lack of a safety net that assumes a lot of risk to participants, leading to either the rejection of the experiment outright as a learning tool or a delay in when students are able to learn it due to age restrictions.</li>
+<li><strong>Logistics</strong>: due to the need at time for specialized components or adherence to safety protocols, experiments typically need to be carried out in special (and often expensive) labs. This reduces their effectiveness somewhat or at least their accessibility. The Covid-19 situation has exacerbated this issue, requiring the distribution of lab tools and a reworking of the labs to accommodate household environments, limiting the tools to be taught and experiments that can be carried out. Additionally, those who cannot acquire the kits – such as those overseas – rely entirely on the experimental data acquired by others and thus miss any hands-on experience.</li>
+</ul>
+<p>And thus the tools of simulation come in, allowing the setting up of virtual representation of real world components. Not only are these vital tools for education [@RemoteLabs], but additionally important to learn in themselves due to their use as tools in the workplace. These simulations, however, do have a disconnect between their visual display and the real-world models they represent and as such may not be the end-all be-all of teaching experimentally [^1].</p>
+<h2><a id="user-content-potential-solution" class="anchor" href="#potential-solution" aria-hidden="true"></a>Potential Solution</h2>
+<p>To help address the tradeoff between 2D simulation and 3D real-world experiences, VRLabs seeks to create an API integration between simulator engines such as SPICE and 3D model interactions.</p>
+<p>![A rough sketch of the user viewpoint. They’ll be able to view both the 3D model of the circuit as well as the 2D representation, they being dynamically linked in real-time. Note 3D model not accurate to 2D model as I couldn’t model the other components quickly; hand model provided by awesomenessman [@HandModel].][ViewSketch]</p>
+<h3><a id="user-content-hardware" class="anchor" href="#hardware" aria-hidden="true"></a>Hardware</h3>
+<p>Most of this is not part of our design – the solution is near entirely software with integration of hardware components.</p>
+<p>The hardware is rather simplistic: a Virtual-Reality headset, internet connection, and potentially just that. There are numerous models on the market, however perhaps the most applicable currently is the recently-released Oculus Rift 2 [@OculusRift]. With a relatively very cheap price point ($300), ability to work with and without external computer connections [^2], and well-developed marketplace it provides a reasonably competitive alternative to providing laboratory equipment on a large-scale distribution.</p>
+<p>![Oculus Rift 2 [@OculusRift]][Rift2]</p>
+<p>Additional hardware will ideally be allowed integration, such as feedback gloves. Whether having the physical touch of the fingers significantly helps in education of the tools (as opposed to buttons or simpler grasp controls) remains to be seen. HaptX [@HaptX] believes that there could be significant potential in running simulations with such devices; other companies are exploring simpler alternatives to similar effect [@HapticFeedback] [@SensX].</p>
+<p>![HaptX Gloves [@HaptX]][HaptX]</p>
+<p>Digital touchscreen phones (which have now become near ubiquitous, even amongst younglings) are increasingly capable of handling multi-tasking and 3D tasks. As such, it is not out of the question to use phones as viewports for 3D worlds, either through cheap viewers [@GoogleCardboard] or simply swaying them left and right.</p>
+<p>While not well thought-out, one idea is to also potentially keep a physical element – dummy “toy” models of what is represented. Could be as simple as expandable boxes/3D printed toys or as complex as modifiable models with dials and such. These dummy models could be sensed by the headsets (near all of which use outside-in tracking via camera on the headset, allowing both camera and infrared detection) to give the tactile feedback to students.</p>
+<h3><a id="user-content-software" class="anchor" href="#software" aria-hidden="true"></a>Software</h3>
+<p>The job of VRLabs is to combine several existing components alongside potentially new libraries, 3D object-interaction recognition, and 3D models to allow an easy and intuitive lab experience. Notably, even with relatively simpler software such as Zoom, many users can struggle even when it is widely adopted – as such, in order to best serve the primary audience of students and instructors, creating a seamless integration and cohesive system is of the utmost importance. This facet is important as to address the ruling of a simple wrapper or 3D engine API alone.</p>
+<p>![The major components of the VRLabs project: handling engine 3D integration, allowing saving and sharing of lab scenarios, and connecting classrooms. [^3]][SoftwareSketch]</p>
+<p>While tools such as Unity and Unreal exist to allow great and relatively easy-to-use flexibility in designing 3D distributable scenes and have made great effort in offering tutorials and lessening their learning curves, they still present a rather large obstacle in practically implementing custom experiments. To address such an issue…</p>
+<ol>
+<li><strong>Lab/Experiment Distribution Marketplace</strong>: scenes, alongside relevant papers and other material, to be downloaded easily by instructors and students.</li>
+<li><strong>Simplified Experiment Scene Creator Toolkit for Instructors</strong>: a simplified drag-and-drop editor for creating quick, custom scenes. Potentially a text-based system. Due to the potential complexity of such a custom editor, likely an optional deliverable.</li>
+</ol>
+<p>Additionally, it should be noted that another huge benefit of the software are the associated models with various engines – assuming ownership, users can use them quickly in their own scenes. If paired with the custom editor, could be a tool not only for VRLabs, but setting up quick 3D scenarios and simulations for general-use purposes such as presentations.</p>
+<ol>
+<li><strong>Upfront Integration</strong>: potentially may require such logic such as fluid mechanics and connection recognition from the upfront program.</li>
+<li><strong>Engine-Dependent Libraries</strong>: SPICE has its own additional libraries of 3D model connection recognition, ASL has associated advanced physics equations imported, etc.</li>
+<li><strong>Separate Libraries Classes</strong>: depends on the engine/lab, have various importable libraries that integrates some advanced functionality into the 3D space. For instance, a “Fluid Mechanics” library that handles all sorts of fluids would be required by both DWSIM as well as various ASL models.</li>
+</ol>
+<p>Additionally, in order to show the 2D models there would be the need of either creating our own 2D viewers or using an existing viewer software, adding potentially another block between the Engines and VRLabs.</p>
+<h2><a id="user-content-need" class="anchor" href="#need" aria-hidden="true"></a>Need</h2>
+<h3><a id="user-content-target-audience" class="anchor" href="#target-audience" aria-hidden="true"></a>Target Audience</h3>
+<ul>
+<li>Education
+<ul>
+<li>Students: “hands-on” learning and more experiments with concepts in action</li>
+<li>Instructors: seeking novel ways to instruct and give demonstrations</li>
+<li>Admins: potentially cheaper in logistics and over-time costs for lab upkeep, consumable replacement, and accident prevention.</li>
+<li>Online Course Students</li>
+<li>DIY Learners: for those who are learning topics outside of typical degree programs or topics without degrees.</li>
+<li>SIM Learners: for those with a strong background in the physical components who are now learning the 2D simulation analogues, and vice versa.</li>
+</ul>
+</li>
+<li>Professional Simulation(?)
+<ul>
+<li>I somewhat doubt that, even if potentially more intuitive and designed around workflows, a 3D simulation could outmatch the traditional 2D simulation workflow for trained professionals. That said, in such fields as art there is some value in a realized 3rd dimension – possibly architects and engineers in that field could find some practical use for it?</li>
+</ul>
+</li>
+</ul>
+<h3><a id="user-content-why-now" class="anchor" href="#why-now" aria-hidden="true"></a>Why Now?</h3>
+<ul>
+<li>Evolving Immersive Technologies
+<ul>
+<li>VR Walks</li>
+<li>HaptX</li>
+</ul>
+</li>
+<li>VR is Cheaper than Ever</li>
+<li>New Features: Link
+<ul>
+<li>No Reliance on PCs</li>
+<li>Ability to Mod and Extend past First-Party Marketplace</li>
+<li>Somewhat exclusive to Oculus, but other parties likely to follow suit.</li>
+</ul>
+</li>
+<li>VR Software Tools
+<ul>
+<li>Kinks ironed out:  people have solved many hiccups and problems, what works and doesnt, etc.</li>
+<li>Library integrations for various 3D engines</li>
+</ul>
+</li>
+<li>Internet Infrastructure: increasing over past decades, but Covid-19 helped push it further</li>
+<li>3D Engines in Phones
+<ul>
+<li>In cases where VR headsets cannot be provided to everyone, cheaper phone-dependent headsets or use of phones could be provided</li>
+<li>Phones now have more and more streamlined 3D processing and AR applications that allow integration with 3D viewports and the like.</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p>\newpage</p>
+<h2><a id="user-content-references" class="anchor" href="#references" aria-hidden="true"></a>References</h2>
+<p>::: {#refs}
+:::</p>
+<p>[^1]: This is somewhat an assumption. One comparative study [@SimVsIrl] found no significant difference between simulation and real-world experimental learning. However, even as a fan of simulator experiences, I’d cast my doubt on if all students can learn the same from a 2D swinging ball or circuit model as they can by plugging things in themselves – at least in my own experience, I found doing the labs by hand allowed me to better connect the theory and real-world experience even after performing SPICE simulations. Arguably, if current simulations prove to be sufficiency, this project would be somewhat obsolete, however could still be useful as perhaps it could allow even more effective means of communication of ideas.
+[^2]: This is arguably its most important feature. Beforehand, there were few options:</p>
+<pre><code>  1. **PC Connected VR**: relies on the PC for computation. At cheapest, looking at around ~$800 PC on top of the VR headset, thus a $1000-$2000 option. Needs additional wires and power outlet.
+  2. **Standalone System**: relies entirely on itself. However, suffers in quality of display (less computational power) and less ability to modify and extend -- stuck to a single, official marketplace.
+
+With the addition of the ability to use it standalone as well as connect to a PC for further modification and computational power, it allows users to overcome the previous problems with both systems in a significantly cheaper fashion.
+</code></pre>
+<p>[^3]: Regarding the “Additional Processing” block, I am unsure of it currently, but it may be necessary to import custom 3D libraries for logic regarding components. This may be attached to the Translator Models as a library package, or perhaps be a separate component that can be pulled from regarding the models. As far as I can see, one of three scenarios can play out:</p>
+<p>[Rift2]: Resources/Images/OculusRift2.png {height=7.5cm}
+[HaptX]: Resources/Images/HaptX.jpg</p>
+
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  <script src="libs/reveal.js/3.8.0/lib/js/head.min.js"></script>
+  <script src="libs/reveal.js/3.8.0/js/reveal.js"></script>
+
+  <script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        slideNumber: true,
+        history: true,
+        keyboard: true,
+        overview: true,
+        center: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        shuffle: false,
+        fragments: true,
+        fragmentInURL: false,
+        embedded: false,
+        help: true,
+        showNotes: false,
+        autoPlayMedia: false,
+        autoSlide: 0,
+        autoSlideStoppable: true,
+        autoSlideMethod: Reveal.navigateNext,
+        defaultTiming: 120,
+        mouseWheel: false,
+        hideAddressBar: true,
+        previewLinks: false,
+        transition: 'slide',
+        transitionSpeed: 'default',
+        backgroundTransition: 'default',
+        viewDistance: 3,
+        parallaxBackgroundImage: '',
+        parallaxBackgroundSize: '',
+        parallaxBackgroundHorizontal: 0,
+        parallaxBackgroundVertical: 0,
+        display: 'block',
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            // { src: 'libs/reveal.js/3.8.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+            { src: 'libs/reveal.js/3.8.0/plugin/notes/notes.js', async: true },
+            { src: 'libs/reveal.js/3.8.0/plugin/chart/Chart.min.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/chart/csv2chart.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/embed-tweet/embed-tweet.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/math/math.js', async: true },
+            { src: 'libs/highlight.js/9.12.0/highlight.js', async: true },
+            { src: 'libs/reveal.js/3.8.0/plugin/anything/anything.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/mermaid/mermaid.min.js', async: true, callback: function() {mermaid.initialize({startOnLoad:false})} },	
+
+           
+        { src: 'libs/reveal.js/3.8.0/plugin/search/search.js', async: true },
+           
+
+           
+        { src: 'libs/reveal.js/3.8.0/plugin/zoom-js/zoom.js', async: true },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/chalkboard/chalkboard.js' },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/menu/menu.js' },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/title-footer/title-footer.js', async: true, callback: function () { title_footer.initialize(); } },
+            
+
+        {
+            src: 'libs/highlight.js/9.12.0/reveal-code-focus-1.0.0-mod.js',
+            async: true,
+            callback: function () {
+                RevealCodeFocus();
+            }
+        },
+            // { src: 'libs/reveal.js/3.8.0/plugin/reveal-code-focus/highlight.pack.js' },
+            // { src: 'libs/reveal.js/3.8.0/plugin/reveal-code-focus/reveal-code-focus.js', async: true, callback: function() { RevealCodeFocus(); } },
+           // {src: 'libs/reveal.js/3.8.0/plugin/line-numbers/line-numbers.js'}
+        ]
+        ,
+    keyboard: {
+        67: function () { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+        66: function () { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+        46: function () { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+        8: function () { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        68: function () { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+    },
+    math: {
+       // mathjax: 'libs/reveal.js/3.8.0/plugin/math/MathJax.js',
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+    },
+    chart: {
+        defaults: {
+            global: {
+                title: { fontColor: "#FFF" },
+                legend: {
+                    position: "bottom",
+                        labels: { fontColor: "#FFF" },
+                },
+                tooltips: {
+                    labels: { fontColor: "#FFF" },
+                },
+            },
+            scale: {
+                scaleLabel: { fontColor: "#FFF" },
+                gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                ticks: { fontColor: "#FFF" },
+            }
+        },
+        line: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"], "borderDash": [[5, 10], [0, 0]] },
+        bar: { backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+        pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
+        radar: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+    },
+    anything: [ 
+	 {
+	  className: "mermaid"
+	 },
+	 // ...
+	],
+    menu: {
+        // Specifies which side of the presentation the menu will 
+        // be shown. Use 'left' or 'right'.
+        side: 'left',
+
+            // Specifies the width of the menu.
+            // Can be one of the following:
+            // 'normal', 'wide', 'third', 'half', 'full', or
+            // any valid css length value
+            width: 'normal',
+
+                // Add slide numbers to the titles in the slide list.
+                // Use 'true' or format string (same as reveal.js slide numbers)
+                numbers: false,
+
+                    // Specifies which slide elements will be used for generating
+                    // the slide titles in the menu. The default selects the first
+                    // heading element found in the slide, but you can specify any
+                    // valid css selector and the text from the first matching
+                    // element will be used.
+                    // Note: that a section data-menu-title attribute or an element
+                    // with a menu-title class will take precedence over this option
+                    titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+                        // If slides do not have a matching title, attempt to use the
+                        // start of the text content as the title instead
+                        useTextContentForMissingTitles: false,
+
+                            // Hide slides from the menu that do not have a title.
+                            // Set to 'true' to only list slides with titles.
+                            hideMissingTitles: false,
+
+                                // Adds markers to the slide titles to indicate the 
+                                // progress through the presentation. Set to 'false'
+                                // to hide the markers.
+                                markers: true,
+
+                                    // Specify custom panels to be included in the menu, by
+                                    // providing an array of objects with 'title', 'icon'
+                                    // properties, and either a 'src' or 'content' property.
+                                    // custom: false,
+                                    custom: [],
+                                        // Specifies the themes that will be available in the themes
+                                        // menu panel. Set to 'true' to show the themes menu panel
+                                        // with the default themes list. Alternatively, provide an
+                                        // array to specify the themes to make available in the
+                                        // themes menu panel, for example...
+                                        // [
+                                        //     { name: 'Black', theme: 'css/theme/black.css' },
+                                        //     { name: 'White', theme: 'css/theme/white.css' },
+                                        //     { name: 'League', theme: 'css/theme/league.css' }
+                                        // ]
+                                        themes: false,
+
+                                            // Specifies the path to the default theme files. If your
+                                            // presentation uses a different path to the standard reveal
+                                            // layout then you need to provide this option, but only
+                                            // when 'themes' is set to 'true'. If you provide your own 
+                                            // list of themes or 'themes' is set to 'false' the 
+                                            // 'themesPath' option is ignored.
+                                            themesPath: 'css/theme/',
+
+                                                // Specifies if the transitions menu panel will be shown.
+                                                // Set to 'true' to show the transitions menu panel with
+                                                // the default transitions list. Alternatively, provide an
+                                                // array to specify the transitions to make available in
+                                                // the transitions panel, for example...
+                                                // ['None', 'Fade', 'Slide']
+                                                transitions: false,
+
+                                                    // Adds a menu button to the slides to open the menu panel.
+                                                    // Set to 'false' to hide the button.
+                                                    openButton: true,
+
+                                                        // If 'true' allows the slide number in the presentation to
+                                                        // open the menu panel. The reveal.js slideNumber option must 
+                                                        // be displayed for this to take effect
+                                                        openSlideNumber: false,
+
+                                                            // If true allows the user to open and navigate the menu using
+                                                            // the keyboard. Standard keyboard interaction with reveal
+                                                            // will be disabled while the menu is open.
+                                                            keyboard: true,
+
+                                                                // Normally the menu will close on user actions such as
+                                                                // selecting a menu item, or clicking the presentation area.
+                                                                // If 'true', the sticky option will leave the menu open
+                                                                // until it is explicitly closed, that is, using the close
+                                                                // button or pressing the ESC or m key (when the keyboard 
+                                                                // interaction option is enabled).
+                                                                sticky: false,
+
+                                                                    // If 'true' standard menu items will be automatically opened
+                                                                    // when navigating using the keyboard. Note: this only takes 
+                                                                    // effect when both the 'keyboard' and 'sticky' options are enabled.
+                                                                    autoOpen: true,
+
+                                                                        // If 'true' the menu will not be created until it is explicitly
+                                                                        // requested by calling RevealMenu.init(). Note this will delay
+                                                                        // the creation of all menu panels, including custom panels, and
+                                                                        // the menu button.
+                                                                        delayInit: false,
+
+                                                                            // If 'true' the menu will be shown when the menu is initialised.
+                                                                            openOnInit: false,
+
+                                                                                // By default the menu will load it's own font-awesome library
+                                                                                // icons. If your presentation needs to load a different
+                                                                                // font-awesome library the 'loadIcons' option can be set to false
+                                                                                // and the menu will not attempt to load the font-awesome library.
+                                                                                loadIcons: false
+    },
+    chalkboard: {
+        toggleChalkboardButton: { left: "60px", bottom: "30px", top: "auto", right: "auto" },
+        toggleNotesButton: { left: "90px", bottom: "30px", top: "auto", right: "auto" },
+
+    }
+    });
+
+
+
+</script>
+</body>
+
+</html>
