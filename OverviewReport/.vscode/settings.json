@@ -1,0 +1,3 @@
+{
+    "pandoc.pdfOptString": "--defaults FormalReport.yaml --metadata-file OR-metadata.yaml --metadata-file ../Resources/boilerplate.yaml" 
+}

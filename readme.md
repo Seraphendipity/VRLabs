@@ -7,7 +7,7 @@ header-right:
 - Department of ECE
 - EE485 | Intro to Embedded Systems
 footer-left: \includegraphics[height=0.3cm]{Resources/Logos/Logo-Seraph.png} 
-bibliography: [references.bib]
+bibliography: [Resources/references.bib]
 ---
 
 # VRLabs | Project Proposal

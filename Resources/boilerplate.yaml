@@ -1,0 +1,28 @@
+author:
+- {name: Ziyad Allehaibi, blazerId: zlehaibi}
+- {name: Terry Edwards, blazerId: tedwa98}
+- {name: Ben Whalin, blazerId: vaeca21}
+- {name: Elijah Rose, blazerId: elirose}
+mentor: Gregory Myers (gmyers)
+mentor-blid: gmyers
+instructor: Abdollah Mirbozorgi
+instructor-blid: samir
+
+course:
+  title: EE498
+  name: Senior Design I
+logo:
+  organization: Logo-UAB-ECE
+  project: Logo-VRLabs
+  author: Logo-Seraph
+
+link:
+  organization: https://www.uab.edu/home/
+  course: http://catalog.uab.edu/search/?P=EE%20498
+  project: https://github.com/Seraphendipity/HHMS
+  author: https://github.com/Seraphendipity
+
+#titlepage: true
+abstract: A Home Health Monitoring System to encourage extensibility of monitoring devices in care-at-home applications.
+toc-own-page: true
+toc-title: Table of Contents
